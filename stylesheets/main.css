@@ -15,6 +15,11 @@ body {
     align-items: center;
 }
 
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
 #calculator {
     height: 20em;
     width: 15em;
@@ -22,17 +27,24 @@ body {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 #screen {
     height: 20%;
     width: 90%;
     margin-top: 5%;
-    background-color: #bce7fd;
+    background-color: #BCE7FD;
     color: #271C36;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    overflow: hidden;
+}
+
+#screen-display {
+    font-size: 36px;
+    margin-right: 0.5em;
 }
 
 #calculator button {
@@ -40,18 +52,17 @@ body {
     font-size: 24px;
 }
 
-#buttons {
+.buttons {
     height: 75%;
     width: 90%; 
     margin: 5% 0;
-    /* border: 2px solid salmon; */
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(4, 22%);
     gap: 4%;
 }
 
-#buttons button {
+.buttons button {
     background-color: #EBF5EE;
     min-width: 0;
     min-height: 0;
@@ -59,11 +70,15 @@ body {
     outline: none;
 }
 
+.buttons button:active {
+    transform: scale(1.05, 1.05);
+}
+
 .number {
     color: #271C36;
 }
 
-#buttons .number:hover {
+.buttons .number:hover {
     background-color: #271C36;
     color: #EBF5EE;
 }
@@ -72,7 +87,12 @@ body {
     color: #FF4B0A;
 }
 
-#buttons .operator:hover {
+.buttons .operator:hover {
+    background-color: #FF4B0A;
+    color: #EBF5EE;
+}
+
+.buttons .pressed {
     background-color: #FF4B0A;
     color: #EBF5EE;
 }
