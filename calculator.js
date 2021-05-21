@@ -25,35 +25,64 @@ buttons.forEach(button => {
         }
 
         if (button.className === "operator") {
-            button.classList.add("pressed");
+            if (previousButtonType === "operator") {
+                operator = button.id;
 
-            previousButtonType = "operator";
+                removeClassFromButtons("pressed");
+                button.classList.add("pressed");
 
-            if (firstNumber == null) {
+                return;
+            }
+
+            if (operator && previousButtonType != "equals") {
+                if (firstNumber) {
+                    secondNumber = getIntFromScreen();
+                }
+
+                display.textContent = operate(operator, firstNumber, secondNumber);
+
+                firstNumber = getIntFromScreen();
+            }
+
+            if (!firstNumber) {
                 firstNumber = getIntFromScreen();
             }
             else {
                 secondNumber = getIntFromScreen();
             }
 
-            operator = button.value;
+            operator = button.id;
+
+            previousButtonType = "operator";
+
+            button.classList.add("pressed");
         }
         else {
-            buttons.forEach(button => {
-                button.classList.remove("pressed");
-            });
+            removeClassFromButtons("pressed");
         }
 
         if (button.id === "equals") {
             if (firstNumber) {
                 secondNumber = getIntFromScreen();
             }
+            else {
+                return;
+            }
 
             display.textContent = operate(operator, firstNumber, secondNumber);
 
             firstNumber = getIntFromScreen();
-            secondNumber = null;
+
+            previousButtonType = "equals";
         }
+
+        // check
+        // console.log("=================\n");
+        // console.log("previousButtonType: " + previousButtonType);
+        // console.log("firstNumber: " + firstNumber);
+        // console.log("operator: " + operator);
+        // console.log("secondNumber: " + secondNumber);
+        // console.log("=================\n");
     });
 });
 
@@ -71,7 +100,13 @@ function resetAll() {
 }
 
 function getIntFromScreen() {
-    return Number.parseInt(display.textContent, 10);
+    return Number.parseFloat(display.textContent);
+}
+
+function removeClassFromButtons(className) {
+    buttons.forEach(button => {
+        button.classList.remove(className);
+    });
 }
 
 function operate(operator, a, b) {
