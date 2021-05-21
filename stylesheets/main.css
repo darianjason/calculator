@@ -83,11 +83,11 @@ h1 {
     color: #EBF5EE;
 }
 
-.operator {
+.operator, #equals {
     color: #FF4B0A;
 }
 
-.buttons .operator:hover {
+.buttons .operator:hover, .buttons #equals:hover {
     background-color: #FF4B0A;
     color: #EBF5EE;
 }
