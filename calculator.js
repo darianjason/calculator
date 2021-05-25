@@ -25,6 +25,10 @@ buttons.forEach(button => {
         }
 
         if (button.className === "operator") {
+            if (previousButtonType === null) {
+                return;
+            }
+
             if (previousButtonType === "operator") {
                 operator = button.id;
 
@@ -34,8 +38,8 @@ buttons.forEach(button => {
                 return;
             }
 
-            if (operator && previousButtonType != "equals") {
-                if (firstNumber) {
+            if (operator != null && previousButtonType != "equals") {
+                if (firstNumber != null) {
                     secondNumber = getIntFromScreen();
                 }
 
@@ -44,7 +48,7 @@ buttons.forEach(button => {
                 firstNumber = getIntFromScreen();
             }
 
-            if (!firstNumber) {
+            if (firstNumber === null) {
                 firstNumber = getIntFromScreen();
             }
             else {
@@ -62,11 +66,11 @@ buttons.forEach(button => {
         }
 
         if (button.id === "equals") {
-            if(previousButtonType === "operator" || previousButtonType === "equals") {
+            if (previousButtonType === "operator" || previousButtonType === "equals") {
                 return;
             }
 
-            if (firstNumber) {
+            if (firstNumber != null) {
                 secondNumber = getIntFromScreen();
             }
             else {
