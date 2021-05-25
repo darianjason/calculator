@@ -62,6 +62,10 @@ buttons.forEach(button => {
         }
 
         if (button.id === "equals") {
+            if(previousButtonType === "operator" || previousButtonType === "equals") {
+                return;
+            }
+
             if (firstNumber) {
                 secondNumber = getIntFromScreen();
             }
@@ -75,14 +79,6 @@ buttons.forEach(button => {
 
             previousButtonType = "equals";
         }
-
-        // check
-        // console.log("=================\n");
-        // console.log("previousButtonType: " + previousButtonType);
-        // console.log("firstNumber: " + firstNumber);
-        // console.log("operator: " + operator);
-        // console.log("secondNumber: " + secondNumber);
-        // console.log("=================\n");
     });
 });
 
