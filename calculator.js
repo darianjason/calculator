@@ -9,6 +9,10 @@ let operator = null;
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
+        if (button.className != "operator") {
+            removeClassFromButtons("pressed");
+        }
+
         if (button.id === "reset") {
             resetAll();
         }
@@ -30,10 +34,15 @@ buttons.forEach(button => {
             }
 
             if (previousButtonType === "operator") {
-                operator = button.id;
+                if (button.id === operator) {
+                    button.classList.add("pressed");
+                }
+                else {
+                    operator = button.id;
 
-                removeClassFromButtons("pressed");
-                button.classList.add("pressed");
+                    removeClassFromButtons("pressed");
+                    button.classList.add("pressed");
+                }
 
                 return;
             }
@@ -60,9 +69,6 @@ buttons.forEach(button => {
             previousButtonType = "operator";
 
             button.classList.add("pressed");
-        }
-        else {
-            removeClassFromButtons("pressed");
         }
 
         if (button.id === "equals") {
