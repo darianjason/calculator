@@ -1,3 +1,3 @@
 # Calculator
 
-A project to practice HTML, CSS and JavaScript.
+A calculator created using HTML, CSS and JavaScript
