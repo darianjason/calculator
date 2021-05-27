@@ -17,6 +17,23 @@ buttons.forEach(button => {
             resetAll();
         }
 
+        if (button.id === "backspace") {
+            display.textContent = display.textContent.slice(0, display.textContent.length - 1);
+
+            previousButtonType = "backspace";
+
+            operator = null;
+            
+            if(display.textContent) {
+                firstNumber = getIntFromScreen();
+                secondNumber = null;
+            }
+            else {
+                firstNumber = null;
+                secondNumber = null;
+            }
+        }
+
         if (button.className === "number") {
             if (previousButtonType === "operator") {
                 display.textContent = button.value;
@@ -29,7 +46,7 @@ buttons.forEach(button => {
         }
 
         if (button.className === "operator") {
-            if (previousButtonType === null) {
+            if (firstNumber === null && display.textContent === '') {
                 return;
             }
 
