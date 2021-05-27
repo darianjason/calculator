@@ -10,7 +10,9 @@ let operator = null;
 buttons.forEach(button => {
     button.addEventListener("click", () => {
         if (button.className != "operator") {
-            removeClassFromButtons("pressed");
+            if (button.id != "backspace") {
+                removeClassFromButtons("pressed");
+            }
         }
 
         if (button.id === "reset") {
@@ -20,18 +22,11 @@ buttons.forEach(button => {
         if (button.id === "backspace") {
             display.textContent = display.textContent.slice(0, display.textContent.length - 1);
 
-            previousButtonType = "backspace";
+            if (previousButtonType === "operator") {
+                return;
+            }
 
-            operator = null;
-            
-            if(display.textContent) {
-                firstNumber = getIntFromScreen();
-                secondNumber = null;
-            }
-            else {
-                firstNumber = null;
-                secondNumber = null;
-            }
+            previousButtonType = "backspace";
         }
 
         if (button.className === "number") {
@@ -46,7 +41,7 @@ buttons.forEach(button => {
         }
 
         if (button.className === "operator") {
-            if (firstNumber === null && display.textContent === '') {
+            if (display.textContent === '') {
                 return;
             }
 
