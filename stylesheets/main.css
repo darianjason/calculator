@@ -62,7 +62,7 @@ h1 {
     gap: 4%;
 }
 
-.buttons button {
+button {
     background-color: #EBF5EE;
     min-width: 0;
     min-height: 0;
@@ -73,29 +73,33 @@ h1 {
     outline: none;
 }
 
-.buttons button:active {
+button:active {
     transform: scale(1.05, 1.05);
 }
 
-.number {
+.number, #decimal-point {
     color: #271C36;
 }
 
-.buttons .number:hover {
+.number:hover, #decimal-point:hover {
     background-color: #271C36;
     color: #EBF5EE;
+}
+
+#decimal-point {
+    grid-column: 2/4;
 }
 
 .operator, #equals {
     color: #FF4B0A;
 }
 
-.buttons .operator:hover, .buttons #equals:hover {
+.operator:hover, #equals:hover {
     background-color: #FF4B0A;
     color: #EBF5EE;
 }
 
-.buttons .pressed {
+.pressed {
     background-color: #FF4B0A;
     color: #EBF5EE;
 }
@@ -112,10 +116,6 @@ h1 {
 #reset:hover, #backspace:hover {
     background-color: #CC001B;
     color: #EBF5EE;
-}
-
-#zero {
-    grid-column-start: 2;
 }
 
 #equals {
