@@ -1,5 +1,5 @@
 const calculator = document.querySelector("#calculator");
-const buttons = Array.from(document.querySelectorAll("button"));
+const buttonArray = Array.from(document.querySelectorAll("button"));
 const display = document.querySelector("#screen-display");
 
 let previousButtonType = null;
@@ -7,7 +7,7 @@ let firstNumber = null;
 let secondNumber = null;
 let operator = null;
 
-buttons.forEach(button => {
+buttonArray.forEach(button => {
     button.addEventListener("click", () => {
         if (button.className != "operator") {
             if (button.id != "backspace") {
@@ -104,6 +104,45 @@ buttons.forEach(button => {
     });
 });
 
+document.addEventListener("keyup", e => {
+    let key = e.key;
+    console.log(key);
+
+    if (key >= 0 && key <= 9) {
+        document.getElementById(key).click();
+    }
+
+    switch (key) {
+        case "Escape":
+            document.getElementById("reset").click();
+            break;
+        case "Backspace":
+            document.getElementById("backspace").click();
+            break;
+        case "/":
+            document.getElementById("divide").click();
+            break;
+        case "*":
+            document.getElementById("multiply").click();
+            break;
+        case "-":
+            document.getElementById("subtract").click();
+            break;
+        case "+":
+            document.getElementById("add").click();
+            break;
+        case ".":
+            document.getElementById("decimalPoint").click();
+            break;
+        case "=":
+            document.getElementById("equals").click();
+            break;
+        case "Enter":
+            document.getElementById("equals").click();
+            break;
+    }
+});
+
 function resetScreen() {
     display.textContent = null;
 }
@@ -122,7 +161,7 @@ function getIntFromScreen() {
 }
 
 function removeClassFromButtons(className) {
-    buttons.forEach(button => {
+    buttonArray.forEach(button => {
         button.classList.remove(className);
     });
 }
