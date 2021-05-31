@@ -45,6 +45,14 @@ h1 {
 #screen-display {
     font-size: 36px;
     margin-right: 0.5em;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#screen-display::-webkit-scrollbar {
+    display: none;
 }
 
 #calculator button {
