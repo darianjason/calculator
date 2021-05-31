@@ -22,7 +22,7 @@ buttonArray.forEach(button => {
         if (button.id === "decimal-point") {
             if (previousButtonType === "number" && !display.textContent.includes(".")) {
                 display.textContent += button.value;
-                
+
                 previousButtonType = "decimalPoint";
             }
         }
@@ -114,7 +114,6 @@ buttonArray.forEach(button => {
 
 document.addEventListener("keyup", e => {
     let key = e.key;
-    console.log(key);
 
     if (key >= 0 && key <= 9) {
         document.getElementById(key).click();
@@ -175,14 +174,31 @@ function removeClassFromButtons(className) {
 }
 
 function operate(operator, a, b) {
+    let result;
+
     switch (operator) {
         case "add":
-            return a + b;
+            result = a + b;
+            break;
         case "subtract":
-            return a - b;
+            result = a - b;
+            break;
         case "multiply":
-            return a * b;
+            result = a * b;
+            break;
         case "divide":
-            return a / b;
+            result = a / b;
+            break;
+    }
+    
+    return roundToSignificantDigits(result, 12, 8);
+}
+
+function roundToSignificantDigits(number, maxDigits, digits) {
+    if (number.toString().length > maxDigits) {
+        return number.toPrecision(digits);
+    }
+    else {
+        return number;
     }
 }
