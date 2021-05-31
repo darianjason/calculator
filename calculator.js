@@ -19,6 +19,14 @@ buttonArray.forEach(button => {
             resetAll();
         }
 
+        if (button.id === "decimal-point") {
+            if (previousButtonType === "number" && !display.textContent.includes(".")) {
+                display.textContent += button.value;
+                
+                previousButtonType = "decimalPoint";
+            }
+        }
+
         if (button.id === "backspace") {
             display.textContent = display.textContent.slice(0, display.textContent.length - 1);
 
@@ -132,7 +140,7 @@ document.addEventListener("keyup", e => {
             document.getElementById("add").click();
             break;
         case ".":
-            document.getElementById("decimalPoint").click();
+            document.getElementById("decimal-point").click();
             break;
         case "=":
             document.getElementById("equals").click();
