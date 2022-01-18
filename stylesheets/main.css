@@ -11,8 +11,11 @@ body {
     display: flex;
     flex: 1;
     flex-flow: column nowrap;
-    justify-content: space-around;
     align-items: center;
+}
+
+header {
+    padding: 2rem 0;
 }
 
 h1 {
@@ -21,7 +24,7 @@ h1 {
 }
 
 #calculator {
-    height: 20em;
+    min-height: 20em;
     width: 15em;
     border-radius: 4px;
     background-color: #40798C;
