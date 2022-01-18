@@ -1,3 +1,3 @@
-# Calculator
+# [Calculator](https://darianjason.github.io/calculator/)
 
-A calculator created using HTML, CSS and JavaScript
+A calculator created using HTML, CSS, and JavaScript.
